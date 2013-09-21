@@ -1,3 +1,6 @@
+## From http://my-music.mine.nu/images/rpi_raspianwheezy_setup.pdf ##
+## From http://www.dingleberrypi.com/2012/09/tutorial-install-phpmyadmin-on-your-raspberry-pi ##
+
 ## Install Apache2 ##
 
 apt-get install apache2
