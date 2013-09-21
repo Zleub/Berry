@@ -1,0 +1,68 @@
+## Install Apache2 ##
+
+apt-get install apache2
+service apache2 start
+service apache2 stop
+
+## Berry net config ##
+
+cd /etc
+nano hostname	## Change 'raspberrypi' to your 'ServerName' ##
+nano hosts	## Add '127.0.0.1 localhost' | 'ServerIp localhost' | 'ServerIp ServerName' ##
+
+## Apache2 net config ##
+
+cd /etc/apache2/conf.d
+nano servername.conf
+
+ # Client side #
+
+ cd etc
+ nano hosts	## Add 'ServerIp Servername' ##
+
+## Install Php ##
+
+apt-get install php5 libapache2-mod-php5 php5-intl php5-mcrypt php5-curl php5-gd php5-sqlite
+cd /var/www
+nano phpinformation.php	## Add '<?php phpinfo(); ?>' ##
+
+## Install MySQL ##
+
+apt-get install mysql-server mysql-client php5-mysql
+mysql -u root -p	## MySQL test : -u specify a user, -p expect a password ##
+
+## Install APC support package for PHP ##
+
+apt-get install php-pear php5-dev apache2-prefork-dev build-essential make && pecl install apc
+nano /etc/php5/apache2/php.ini	## Add 'extension=apc.so' in Dynamic Extension ##
+
+ # Install some additional fonts, the nmap network analysis tool some other utilities #
+
+ apt-get install nmap
+ apt-get install zenmap	## GUI - on pi ? ##
+
+## Install PhpMyAdmin ##
+
+apt-get install libapache2-mod-auth-mysql php5-mysql phpmyadmin	## ServerWeb : Apache2 ##
+nano /etc/php5/apache2/php.ini	## Add 'Shellextension=mysql.so' in Dynamic Extensions ##
+cd /var/www
+ln -s /usr/share/phpmyadmin	## navigate to: http://Servername/phpmyadmin ##
+
+ # 403 permission denied #
+
+ nano /etc/apache2/apache2.conf	## Add 'Include /etc/phpmyadmin/apache.conf' at end ##
+
+## Install the Webmin administration Tool ##
+
+nano /etc/apt/sources.list	## Add 'deb http://download.webmin.com/download/repository sarge contrib' | 'deb http://webmin.mirror.somersettechsolutions.co.uk/repository sarge contrib' ##
+cd /root
+wget http://www.webmin.com/jcameron-key.asc
+apt-key add jcameron-key.asc 
+apt-get update
+apt-get install webmin 
+
+## Install the Webalizer Graphical Webstats package ##
+
+apt-get install webalizer
+nano /etc/webalizer/webalizer.conf	## Add 'logfile /var/log/apache2/access.log' in Apache2 logfile | Uncomment/add 'GeoIP yes' 'GeoIPDatabase /usr/share/GeoIP/GeoIP.dat'
+
