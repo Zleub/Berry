@@ -1,0 +1,13 @@
+## Setup the raspberry pi ##
+
+sudo dpkg-reconfigure tzdata
+sudo apt-get update
+sudo apt-get upgrade
+
+## Keep the Firmware Up To Date ##
+
+sudo apt-get install ca-certificates
+sudo apt-get install git-core
+sudo wget http://goo.gl/1BOfJ -O /usr/bin/rpi-update && sudo chmod +x /usr/bin/rpi-update
+sudo rpi-update
+sudo shutdown -r now
