@@ -1,6 +1,10 @@
 ## From http://my-music.mine.nu/images/rpi_raspianwheezy_setup.pdf ##
 ## From http://www.dingleberrypi.com/2012/09/tutorial-install-phpmyadmin-on-your-raspberry-pi ##
 
+## Install proftpd ##
+
+apt-get install proftpd
+
 ## Install Apache2 ##
 
 apt-get install apache2
@@ -12,10 +16,6 @@ service apache2 stop
 cd /etc
 nano hostname	## Change 'raspberrypi' to your 'ServerName' ##
 nano hosts	## Add '127.0.0.1 localhost' | 'ServerIp localhost' | 'ServerIp ServerName' ##
-
-## Install proftpd ##
-
-apt-get install proftpd
 
 ## Apache2 net config ##
 
