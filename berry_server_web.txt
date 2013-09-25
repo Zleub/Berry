@@ -13,6 +13,10 @@ cd /etc
 nano hostname	## Change 'raspberrypi' to your 'ServerName' ##
 nano hosts	## Add '127.0.0.1 localhost' | 'ServerIp localhost' | 'ServerIp ServerName' ##
 
+## Install proftpd ##
+
+apt-get install proftpd
+
 ## Apache2 net config ##
 
 cd /etc/apache2/conf.d
